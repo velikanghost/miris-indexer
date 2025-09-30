@@ -1,0 +1,59 @@
+type Ambient_CrocSwap {
+  id: ID!
+  base: String!
+  quote: String!
+  poolIdx: BigInt!
+  isBuy: Boolean!
+  inBaseQty: Boolean!
+  qty: BigInt!
+  tip: BigInt!
+  limitPrice: BigInt!
+  minOut: BigInt!
+  reserveFlags: BigInt!
+  baseFlow: BigInt!
+  quoteFlow: BigInt!
+}
+
+type AprMon_Deposit {
+  id: ID!
+  sender: String!
+  owner: String!
+  assets: BigInt!
+  shares: BigInt!
+}
+
+type AprMon_Redeem {
+  id: ID!
+  controller: String!
+  receiver: String!
+  requestId: BigInt!
+  shares: BigInt!
+  assets: BigInt!
+  fee: BigInt!
+}
+
+type Clober_Swap {
+  id: ID!
+  user: String!
+  inToken: String!
+  outToken: String!
+  amountIn: BigInt!
+  amountOut: BigInt!
+  router: String!
+  method: String!
+}
+
+type Magma_Deposit {
+  id: ID!
+  depositor: String!
+  amount: BigInt!
+  gMonMinted: BigInt!
+  referralId: BigInt!
+}
+
+type Magma_Withdraw {
+  id: ID!
+  withdrawer: String!
+  amount: BigInt!
+  gMonBurned: BigInt!
+}

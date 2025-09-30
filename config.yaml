@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=./node_modules/envio/evm.schema.json
+name: envio-indexer
+networks:
+  - id: 10143
+    start_block: 40304500
+    contracts:
+      - name: Clober
+        address:
+          - 0xfD845859628946B317A78A9250DA251114FbD846
+        handler: src/EventHandlers.ts
+        events:
+          - event: Swap(address indexed user, address indexed inToken, address indexed outToken, uint256 amountIn, uint256 amountOut, address router, bytes4 method)
+      - name: Ambient
+        address:
+          - 0x88B96aF200c8a9c35442C8AC6cd3D22695AaE4F0
+        handler: src/EventHandlers.ts
+        events:
+          - event: CrocSwap(address indexed base, address indexed quote, uint256 poolIdx, bool isBuy, bool inBaseQty, uint128 qty, uint16 tip, uint128 limitPrice, uint128 minOut, uint8 reserveFlags, int128 baseFlow, int128 quoteFlow)
+      - name: Magma
+        address:
+          - 0x2c9C959516e9AAEdB2C748224a41249202ca8BE7
+        handler: src/EventHandlers.ts
+        events:
+          - event: Deposit(address indexed depositor, uint256 indexed amount, uint256 gMonMinted, uint256 indexed referralId)
+          - event: Withdraw(address indexed withdrawer, uint256 indexed amount, uint256 gMonBurned)
+      - name: AprMon
+        address:
+          - 0xb2f82D0f38dc453D596Ad40A37799446Cc89274A
+        handler: src/EventHandlers.ts
+        events:
+          - event: Deposit(address indexed sender, address indexed owner, uint256 assets, uint256 shares)
+          - event: Redeem(address indexed controller, address indexed receiver, uint256 indexed requestId, uint256 shares, uint256 assets, uint256 fee)
+unordered_multichain_mode: true
+preload_handlers: true
